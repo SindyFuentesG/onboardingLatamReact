@@ -1,20 +1,17 @@
 import React from "react";
-import { useFetchProduct } from "../hooks/useFetchProduct";
 
-export const CardProduct = () => {
-  const { data: product, loading } = useFetchProduct();
+export const CardProduct = ({ name, description, price }) => {
   return (
     <>
-      {!loading && (
-        <div className="card">
-          <h3>{product.name}</h3>
-          <p>{product.description}</p>
-          <p>${product.price} COP</p>
-        </div>
-      )}
+      <div className="card">
+        <h3>{name}</h3>
+        <p>{description}</p>
+        <p>${price} COP</p>
+      </div>
+
       <style jsx>{`
         .card {
-          margin: 1rem;
+          margin: 5px;
           flex-basis: 45%;
           padding: 1.5rem;
           text-align: left;
@@ -23,6 +20,13 @@ export const CardProduct = () => {
           border: 1px solid #eaeaea;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .card-grid {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: 10px;
         }
 
         .card:hover,
